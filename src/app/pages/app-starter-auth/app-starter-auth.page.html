@@ -1,0 +1,35 @@
+<ion-content>
+  <section class="main">
+    <div class="container">
+      <div class="logo-container">
+        <div class="logo">
+          <ion-img src="assets/logo/car.png"></ion-img>
+        </div>
+        <div class="caption">
+          <h2>CabPool Taxi</h2>
+          <h6>At your service.</h6>
+        </div>
+      </div>
+      <div class="links-container">
+        <ion-row>
+          <ion-col size="12">
+            <ion-button
+              class="ion-signup-btn"
+              expand="full"
+              [routerLink]="['/','app-starter-auth','signup']"
+              >Sign Up</ion-button
+            >
+          </ion-col>
+          <ion-col size="12">
+            <ion-button
+              class="ion-login-btn"
+              expand="full"
+              [routerLink]="['/','app-starter-auth','signin']"
+              >Sign In</ion-button
+            >
+          </ion-col>
+        </ion-row>
+      </div>
+    </div>
+  </section>
+</ion-content>
