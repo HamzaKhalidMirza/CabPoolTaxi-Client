@@ -84,7 +84,8 @@ export class LocationSetupPage implements OnInit {
       for(let i=0; i<=selectedLocation.index; i++) {
         this.locationList[i].disabled = true;
       }
-      for(let i=++selectedLocation.index; i<this.locationList.length; i++) {
+      const index = selectedLocation.index + 1;
+      for(let i=index; i<this.locationList.length; i++) {
         this.locationList[i].disabled = false;
       }
     } else if(this.selectedEndLoc == null) {

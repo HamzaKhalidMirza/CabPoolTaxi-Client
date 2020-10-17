@@ -75,7 +75,7 @@ export class BookingSubmissionComponent implements OnInit {
     const trip = this.trip;
     const driver = this.trip.driver;
     const review = {
-      givenBy: 'driver',
+      givenBy: 'client',
       review: this.review.value,
       rating: this.rating.value,
       trip: trip,

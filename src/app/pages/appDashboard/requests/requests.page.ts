@@ -1,3 +1,5 @@
+import { Router } from '@angular/router';
+import { AuthService } from './../../../../common/sdk/core/auth.service';
 import { Component, OnInit } from '@angular/core';
 import { RequestService } from 'src/common/sdk/custom/api/request.service';
 import {format} from "date-fns";
@@ -17,7 +19,11 @@ export class RequestsPage implements OnInit {
   relevantRequests: any = [];
   isLoading: any;
 
-  constructor(private requestService: RequestService) {}
+  constructor(
+    private requestService: RequestService,
+    private authService: AuthService,
+    private router: Router
+    ) {}
 
   ngOnInit() {
   }
@@ -59,6 +65,14 @@ export class RequestsPage implements OnInit {
     );
   }
 
+  async openChatRoom(request) {
+
+    await this.authService.clearFieldDataFromStorage('chat-driverData');
+    await this.authService.setFieldDataToStorage('chat-driverData', request.driver);
+
+    this.router.navigateByUrl('chat-room');
+  }
+  
   getTripDayName(dateStr, locale) {
     var date = new Date(dateStr);
     return date.toLocaleDateString(locale, { weekday: "long" });

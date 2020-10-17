@@ -225,20 +225,25 @@ export class OnGoingRidePage implements OnInit {
             })
             .then((toast) => {
               toast.present();
+              this.currentLocationObs.unsubscribe();
+              this.clientSocketObs.unsubscribe();
+              this.driverArrivalObs.unsubscribe();
+              this.driverPickupObs.unsubscribe();
+              this.driverDropoffObs.unsubscribe();
+              this.navCtrl.pop()
+                .then(() => {
+                  this.router.navigateByUrl('/tabs/rides');
+                })
+                .catch(err => {
+                  console.log(err);
+                });
             })
             .catch((err) => {
               console.log(err);
             });
     
-            setTimeout(() => {
-              this.navCtrl.pop()
-                .then(() => {
-                  this.router.navigateByUrl('/tabs');
-                })
-                .catch(err => {
-                  console.log(err);
-                });
-            }, 3000);    
+            // setTimeout(() => {
+            // }, 3000);    
           });
         });    
       },
